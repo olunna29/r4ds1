@@ -2,5 +2,67 @@
 title: "Analyzing Music Data"
 author: "Oluchi Nnadi"
 format: html
+execute:
+  echo: false
 ---
 
+```{r}
+#| message: false
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+```
+
+```{r}
+#| cache: true
+# Load the billboard dataset
+data("billboard")
+
+# 1. Prepare data
+tidy_billboard <- billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  ) |>
+  mutate(week = as.numeric(str_remove(week, "wk")))
+
+# Get Top 10 songs
+top_10_songs <- tidy_billboard |>
+  group_by(artist, track) |>
+  filter(min(rank) <= 10) |>
+  ungroup() |>
+  mutate(
+    # Create a highlight label
+    highlight_label = case_when(
+      track == "Music" & artist == "Madonna" ~ "Fastest to #1",
+      track == "Amazed" & artist == "Lonestar" ~ "Slowest to #1",
+      track == "Higher" & artist == "Creed" ~ "Longest Top-10 run",
+      TRUE ~ "Other Top-10"
+    )
+  )
+
+# 2. Plot
+ggplot(top_10_songs, aes(x = week, y = rank, group = interaction(artist, track))) +
+  # Draw all top-10 songs in gray first
+  geom_line(data = filter(top_10_songs, highlight_label == "Other Top-10"), 
+            color = "gray80", alpha = 0.5) +
+  # Draw the notable songs in color on top
+  geom_line(data = filter(top_10_songs, highlight_label != "Other Top-10"), 
+            aes(color = highlight_label), linewidth = 1) +
+  scale_y_reverse() +
+  scale_color_manual(values = c("Fastest to #1" = "#E41A1C", 
+                                "Slowest to #1" = "#377EB8", 
+                                "Longest Top-10 run" = "#4DAF4A")) +
+  labs(
+    title = "Trajectories of Billboard Top-10 Songs",
+    subtitle = "Highlighting notable chart performers",
+    x = "Week",
+    y = "Rank (Lower is better)",
+    color = "Notable Songs"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
