@@ -82,6 +82,105 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                   min     q1.25%      median       q3.75%         max
+artist.familiarity   0  0.4675700   0.5635836    0.6680202    1.000000
+artist.hotttnesss    0  0.3252656   0.3807423    0.4538581    1.082503
+song.year            0  0.0000000   0.0000000 2000.0000000 2010.000000
+song.tempo           0 96.9595000 120.1565000  144.0067500  262.828000</code></pre>
+</div>
+</div>
+<p>Artist.familiarity refers to how familiar the artist is to their listeners, with higher values indicating greater familiarity. Artist.hotttnesss measures the popularity of the artist (when downloaded), with higher values indicating greater popularity.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Plot saved to song_year_distribution.png</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                               column placeholder_count
+artist.location       artist.location                 0
+release.name             release.name                 0
+song.title                 song.title                 0
+song.year                   song.year              5320
+artist.familiarity artist.familiarity                24
+artist.hotttnesss   artist.hotttnesss               496</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>                     category count
+FALSE      usable_coordinates  3742
+TRUE  placeholder_coordinates  6258</code></pre>
+</div>
+</div>
+<p>Many artist’s location is unknown, which is why there are many placeholder coordinates. The placeholder coordinates are represented by (0, 0), which is not a valid location for any artist, so they’ve not been placed on the map.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'maps'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    map</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saved world map to artist_world_map.png</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saved world map to artist_world_map.png</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Saved genre map to artist_genre_map.png</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 </main>
 <!-- /main column -->
