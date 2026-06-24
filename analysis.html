@@ -121,15 +121,6 @@ TRUE  placeholder_coordinates  6258</code></pre>
 </div>
 <p>Many artist’s location is unknown, which is why there are many placeholder coordinates. The placeholder coordinates are represented by (0, 0), which is not a valid location for any artist, so they’ve not been placed on the map.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'maps'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:purrr':
-
-    map</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -164,6 +155,10 @@ Attaching package: 'maps'</code></pre>
 </div>
 <p>There is a cluster of blues music in the United States along with metal music in Europe.</p>
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_point(data = year_artists, aes(x = artist.longitude, y =
+artist.latitude, : Ignoring unknown parameters: `linewidth`</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
